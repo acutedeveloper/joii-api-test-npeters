@@ -2,7 +2,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: nginx.dockerfile
+      dockerfile: ./dockerfiles/nginx.dockerfile
     ports:
       - 80:80
     volumes:
@@ -25,7 +25,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: php.dockerfile
+      dockerfile: ./dockerfiles/php.dockerfile
     volumes:
       - ./src:/var/www/html
     ports:
@@ -33,7 +33,7 @@ services:
   composer:
     build:
       context: .
-      dockerfile: composer.dockerfile
+      dockerfile: ./dockerfiles/composer.dockerfile
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
@@ -46,7 +46,7 @@ services:
   artisan:
     build:
       context: .
-      dockerfile: php.dockerfile
+      dockerfile: ./dockerfiles/php.dockerfile
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html
