@@ -27,12 +27,12 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "john",
+							"value": "nigel",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "john@nigel.com",
+							"value": "nigel@nigel.com",
 							"type": "text"
 						},
 						{
