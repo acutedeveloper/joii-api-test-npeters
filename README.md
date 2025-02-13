@@ -14,6 +14,8 @@ The Docker setup is using separate containers for:
 
 ```
 docker-compose up --build nginx
+docker-compose run --rm composer install
+docker-compose run --rm artisan migrate
 ```
 
 ## API
