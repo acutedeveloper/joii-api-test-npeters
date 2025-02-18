@@ -2,10 +2,11 @@
 
 namespace App\Http\Services;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 
-class UserCreateService {
-    public function create(User $user): User
+class UserRegisterService {
+    public function createUser(User $user): User
     {
         return User::create([
             'name' => $user['name'],
@@ -13,4 +14,5 @@ class UserCreateService {
             'password' => Hash::make($user['password']),
         ]);
     }
+
 }

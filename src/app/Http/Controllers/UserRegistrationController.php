@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\UserCreateService;
-use App\Models\User;
-use App\Http\Requests\SaveUserRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use App\Http\Services\UserRegisterService;
+use App\Http\Requests\RegisterUserRequest;
 
 class UserRegistrationController extends Controller
 {
-    public function register(SaveUserRequest $request, UserCreateService $userCreateService) {
+    public function register(RegisterUserRequest $request, UserRegisterService $userCreateService) {
 
-        $user = $userCreateService->create($request->validated());
+        $userCreateService->createUser($request->validated());
 
         return response()->json([
             'message' => 'User Created ',
