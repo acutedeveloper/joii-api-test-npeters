@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\UserLoginController;
+use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/user', function (Request $request) {
@@ -12,7 +13,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('register', [UserRegistrationController::class,'register']);
 Route::post('login', [UserLoginController::class,'login']);
-Route::post('logout', [UserLoginController::class,'logout'])->middleware('auth:sanctum');
+Route::post('logout', [UserLogoutController::class,'logout'])->middleware('auth:sanctum');
 
 Route::post('dashboard',[DashboardController::class,'index'])->middleware('auth:sanctum');
 

@@ -7,19 +7,25 @@ use Illuminate\Support\Facades\Hash;
 
 class UserLoginService {
 
-    public function loginUser(User $user): JsonResponse
+    public function loginUser($formData): array
     {
-        $user = User::where('email',$user['email'])->first();
+        $user = User::where('email',$formData['email'])->first();
 
-        if(!$user || !Hash::check($user['password'],$user->password)){
-            return response()->json([
-                'message' => 'Invalid Credentials'
-            ],401);
+        if(!$user || !Hash::check($formData['password'],$user->password)){
+            return [
+                'success' => false,
+                'message' => 'Invalid Credentials',
+                'status' => 401
+            ];
         }
 
-        return response()->json([
-            'access_token' => $this->getUserToken($user),
-        ]);
+        return [
+            'success' => true,
+            'data' => [
+                'access_token' => $this->getUserToken($user),
+            ],
+            'status' => 200
+        ];
     }
 
     protected function getUserToken(User $user): String

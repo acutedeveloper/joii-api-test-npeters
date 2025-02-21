@@ -6,12 +6,12 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 
 class UserRegisterService {
-    public function createUser(User $user): User
+    public function createUser($validatedRequestData): User
     {
         return User::create([
-            'name' => $user['name'],
-            'email' => $user['email'],
-            'password' => Hash::make($user['password']),
+            'name' => $validatedRequestData['name'],
+            'email' => $validatedRequestData['email'],
+            'password' => Hash::make($validatedRequestData['password']),
         ]);
     }
 
